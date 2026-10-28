@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  /* Surfaces borrow the cool grey of an engine viewport, not warm paper. */
+  --color-surface: #eceff3;
+  --color-panel: #ffffff;
+  --color-line: #d3d9e0;
+  --color-ink: #14171f;
+  /* Contrast-checked against --color-surface (5.19:1) and --color-panel
+     (5.98:1). Both clear WCAG AA. See e2e/a11y.spec.ts. */
+  --color-muted: #5b6472;
+
+  /* The two halves of every trade. Magenta is the engine's missing-texture
+     colour: it always marks something absent. Teal marks something offered. */
+  /* Deepened from #e5008e, which failed AA on both its backgrounds.
+     Now 5.87:1 on panel and 5.04:1 on missing-soft. */
+  --color-missing: #c2007a;
+  --color-missing-soft: #fde8f4;
+  --color-have: #10716b;
+  --color-have-soft: #ddf0ed;
+
+  --font-display: var(--font-bricolage), system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+/* Missing-texture checker. Small, high-contrast, and used as a swatch inside a
+   chip rather than behind text, so the texture reads without hurting legibility. */
+.swatch-missing {
+  background-image:
+    linear-gradient(45deg, var(--color-missing) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--color-missing) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--color-missing) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--color-missing) 75%);
+  background-color: #ffffff;
+  background-size: 6px 6px;
+  background-position:
+    0 0,
+    0 3px,
+    3px -3px,
+    -3px 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

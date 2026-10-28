@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "gamedev-hub",
+  "main": ".open-next/worker.js",
+
+  // Pin the runtime date. Bumping it is a deliberate, reviewable change.
+  "compatibility_date": "2026-08-01",
+
+  // Next.js requires the Node.js runtime, not the Edge runtime.
+  "compatibility_flags": ["nodejs_compat"],
+
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS",
+  },
+
+  "observability": {
+    "enabled": true,
+  },
+
+  // Secrets are NOT set here. Use `wrangler secret put <NAME>` or the
+  // dashboard, so they never enter version control.
+  "vars": {},
+}

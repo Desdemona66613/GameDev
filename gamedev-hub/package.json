@@ -1,0 +1,60 @@
+{
+  "name": "gamedev-hub",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --max-warnings=0",
+    "lint:fix": "eslint . --fix --max-warnings=0",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "db:types": "pnpm dlx supabase gen types typescript --linked > lib/database.types.ts",
+    "check": "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run audit",
+    "audit": "pnpm audit --audit-level=high",
+    "sbom": "cdxgen --type javascript --spec-version 1.6 --required-only --output sbom.json --no-recurse",
+    "cf:build": "opennextjs-cloudflare build",
+    "cf:preview": "opennextjs-cloudflare preview",
+    "cf:deploy": "opennextjs-cloudflare deploy",
+    "typecheck:watch": "tsc --noEmit --watch --preserveWatchOutput",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:report": "playwright show-report"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.12.5",
+    "@supabase/supabase-js": "^2.112.4",
+    "next": "16.3.3",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@cyclonedx/cdxgen": "^12.8.4",
+    "@next/eslint-plugin-next": "^16.3.3",
+    "@opennextjs/cloudflare": "^1.20.5",
+    "@playwright/test": "^1.62.1",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "prettier": "^3.9.6",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "typescript-eslint": "^8.69.0",
+    "wrangler": "^4.127.1"
+  },
+  "engines": {
+    "node": ">=20.9",
+    "pnpm": ">=11"
+  },
+  "packageManager": "pnpm@11.24.0"
+}

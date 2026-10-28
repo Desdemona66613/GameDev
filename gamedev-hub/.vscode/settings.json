@@ -1,0 +1,30 @@
+{
+  // Use the TypeScript version from node_modules, not the one bundled with
+  // VS Code. Otherwise your editor and `npm run typecheck` can disagree.
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // Match .editorconfig / .gitattributes so files don't flip to CRLF on Windows.
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+
+  // Tailwind 4 keeps config in CSS; these stop false "unknown at-rule" errors.
+  "css.lint.unknownAtRules": "ignore",
+  "tailwindCSS.experimental.classRegex": [
+    ["className={`([^`]*)`}", "([^\\s]*)"]
+  ],
+
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.next": true,
+    "**/.open-next": true,
+    "**/package-lock.json": true
+  }
+}

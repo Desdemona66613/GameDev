@@ -1,0 +1,7 @@
+.next
+.open-next
+.wrangler
+node_modules
+pnpm-lock.yaml
+lib/database.types.ts
+sbom.json

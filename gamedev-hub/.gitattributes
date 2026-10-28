@@ -1,0 +1,12 @@
+# Normalise line endings. Without this, Git on Windows checks files out as CRLF
+# (core.autocrlf defaults to true), Prettier expects LF, and `npm run
+# format:check` fails on a clean clone — on your machine but not in CI.
+* text=auto eol=lf
+
+# Binary files must never be converted.
+*.png binary
+*.jpg binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.zip binary
